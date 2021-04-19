@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -12,16 +12,18 @@ esconder = false;
 
 pessoas = [
   { nome: "José", idade: 18 },
-  { nome: "Maria", idade: 22 },
-  { nome: "Elcio", idade: 51 },
-  { nome: "Mario", idade: 35 },
-  { nome: "Nelson", idade: 12 }
+  { nome: "Maria", idade: 22 }
   ];
 
 alterarExibicao() {
 this.textoBotao = this.esconder ? "Esconder" : "Exibir";
 this.esconder = !this.esconder;
 }
+
+onAdicionarPessoa(pessoa) {
+  this.pessoas = [pessoa, ...this.pessoas];
+  }
+
 
 pegarCor(idade){
   return idade >= 30 ? "red": "blue";
